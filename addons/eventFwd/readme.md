@@ -3,7 +3,7 @@ eventFwd
 Forwards registered events and data to a connected 3rd party program through a network socket.
 This allows 3rd party programs to take advantage of Windower's (amazing) hooks.
 
-**__Example:__**
+**__Example:__**  
     Your 3rd party program (using windowerhelper.dll) can register with eventFwd the "chat message" event.
 	Every time the Windower chat message event fires, the 'message', 'mode', 'sender', and 'gm' arguments 
 	are sent to your program to be used just like they would be in LUA.
