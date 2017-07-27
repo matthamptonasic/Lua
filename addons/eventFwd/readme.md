@@ -1,6 +1,7 @@
-################
-### eventFwd ###
-################
+// ************ //
+#    eventFwd
+==================
+// ************ //
 Forwards registered events and data to a connected 3rd party program through a network socket.
 This allows 3rd party programs to take advantage of Windower's (amazing) hooks.
 
@@ -19,9 +20,9 @@ Example:
 The addon simply needs to know the socket number the server is listening on.
 This is done by sending:
 
-//lua invoke eventFwd setSocketPort iPortNb
+```//lua invoke eventFwd setSocketPort iPortNb```
 
-Where iPortNb is the port of the listening socket.
+Where `iPortNb` is the port of the listening socket.
 
 ### Unregistering an event
 
