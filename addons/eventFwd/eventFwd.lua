@@ -43,9 +43,15 @@ files = require('files')
 config = require('config')
 res = require('resources')
 local socket = require("socket")
-
+local eventInfo = require('eventInfo')
+local events = {}
+events["info"] = {}
+events["info"] = eventInfo
+--print("events has ", #events["info"], " items.")
+	
 defaults = {}
 settings = config.load(defaults)
+
 
 local socketPort = 0
 local socketAddr = "127.0.0.1"
@@ -60,6 +66,10 @@ bagIds = T{}
 for bag in res.bags:it() do
     bagIds[bag.name:lower()] = bag.id
 end
+
+--for evInfo in events[info]:it() do
+--	events[ids][evInfo[name] = evInfo[id]
+--end
 
 function setSocketPort(iPortNb)
 	socketPort = iPortNb
@@ -79,3 +89,37 @@ function send(iData)
 	socketClient:close()
 	return 0
 end
+
+--gain buff 	number buff_id 	None 	Triggers on receiving a buff or debuff.
+--lose buff 	number buff_id 	None 	Triggers on losing a buff or debuff. 
+function printEventInfo(iEventId)
+	local evInfo = events["info"][iEventId]
+	table.vprint(evInfo)
+	--print("events has ", #events, " items.")
+	--print("id passed was", iEventId)
+end
+
+function register_event(iEvent)
+	if(type(iEvent) == "number") then
+	elseif(type(iEvent) == "string") then
+	else
+		log("unknown type passed to 'eventFwd.register_event'.")
+		return 1
+	end
+end
+--windower.register_event('load', function()
+--	find_all_tempitems()
+--end)
+
+printEventInfo(6)
+
+
+
+
+
+
+
+
+
+
+
