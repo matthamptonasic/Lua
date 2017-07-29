@@ -43,12 +43,11 @@ files = require('files')
 config = require('config')
 res = require('resources')
 local socket = require("socket")
-local eventInfo = require('eventInfo')
-local events = {}
-events["info"] = {}
-events["info"] = eventInfo
---print("events has ", #events["info"], " items.")
-	
+events = require('eventInfo')
+
+require("eventCallbacks")
+setCallbacks(events)
+
 defaults = {}
 settings = config.load(defaults)
 
@@ -93,14 +92,17 @@ end
 --gain buff 	number buff_id 	None 	Triggers on receiving a buff or debuff.
 --lose buff 	number buff_id 	None 	Triggers on losing a buff or debuff. 
 function printEventInfo(iEventId)
-	local evInfo = events["info"][iEventId]
-	table.vprint(evInfo)
+	local evInfo = events[iEventId]
+	--table.vprint(evInfo)
+	evInfo.cb()
 	--print("events has ", #events, " items.")
 	--print("id passed was", iEventId)
 end
 
 function register_event(iEvent)
+	local ev = nil
 	if(type(iEvent) == "number") then
+		ev = events[iEvent]
 	elseif(type(iEvent) == "string") then
 	else
 		log("unknown type passed to 'eventFwd.register_event'.")
@@ -111,7 +113,7 @@ end
 --	find_all_tempitems()
 --end)
 
-printEventInfo(6)
+printEventInfo(4)
 
 
 
