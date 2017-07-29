@@ -25,15 +25,15 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --]]
---[] = {id=, name="", args={name='string'}, ret={}, desc=""},
+--[] = {id=, name="", args={name='string'}, ret={}, cb=nil, desc=""},
 
 return {
-	[0] = {id=0, name="load", args={}, ret={}, desc="Triggers on addon load. Cannot be used in eventFwd addon."},
-	[1] = {id=1, name="unload", args={}, ret={}, desc="Triggers on addon unload. Cannot be used in eventFwd addon."},
-	[2] = {id=2, name="login", args={name='string'}, ret={}, desc="Triggers on login."},
-	[3] = {id=3, name="logout", args={name='string'}, ret={}, desc="Triggers on logout."},
-	[4] = {id=4, name="gain buff", args={buff_id='uint16'}, ret={}, desc="Triggers on receiving a buff or debuff."},
-	[5] = {id=5, name="lose buff", args={buff_id='uint16'}, ret={}, desc="Triggers on losing a buff or debuff."},
-	[6] = {id=6, name="gain experience", args={amount='uint32', chain_number="uint16", limit="bool"}, ret={}, desc="Triggers on gaining any experience. limit is true, if the EXP gained were limit points."},
-	[7] = {id=7, name="lose experience", args={amount='uint32'}, ret={}, desc="Triggers on losing any experience."}
+	[0] = {id=0, name="load", args={}, ret={}, cb=nil, desc="Triggers on addon load. Cannot be used in eventFwd addon."},
+	[1] = {id=1, name="unload", args={}, ret={}, cb=nil, desc="Triggers on addon unload. Cannot be used in eventFwd addon."},
+	[2] = {id=2, name="login", args={name='string'}, ret={}, cb=nil, desc="Triggers on login."},
+	[3] = {id=3, name="logout", args={name='string'}, ret={}, cb=nil, desc="Triggers on logout."},
+	[4] = {id=4, name="gain buff", args={buff_id='uint16'}, ret={}, cb=nil, desc="Triggers on receiving a buff or debuff."},
+	[5] = {id=5, name="lose buff", args={buff_id='uint16'}, ret={}, cb=nil, desc="Triggers on losing a buff or debuff."},
+	[6] = {id=6, name="gain experience", args={amount='uint32', chain_number="uint16", limit="bool"}, ret={}, cb=nil, desc="Triggers on gaining any experience. limit is true, if the EXP gained were limit points."},
+	[7] = {id=7, name="lose experience", args={amount='uint32'}, ret={}, cb=nil, desc="Triggers on losing any experience."}
 }
