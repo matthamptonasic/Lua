@@ -33,14 +33,41 @@ function setCallbacks()
 	if callbackSet then
 		return 0
 	end
+	events[2].cb = evCb_login
+	events[3].cb = evCb_logout
 	events[4].cb = evCb_gain_buff
+	events[5].cb = evCb_lose_buff
+	events[6].cb = evCb_gain_experience
+	events[7].cb = evCb_lose_experience
+	
+	events[8].cb = evCb_incoming_chunk
 	
 	callbacksSet = True
 	return 0
 end
 
-function evCb_gain_buff()
-	print("sending gain_buff.")
+function evCb_login(iName)
+	send("2 " .. iName)
+end
+function evCb_logout(iName)
+	send("3 " .. iName)
+end
+function evCb_gain_buff(iBuffId)
+	send("4 " .. iBuffId)
+end
+function evCb_lose_buff(iBuffId)
+	send("5 " .. iBuffId)
+end
+function evCb_gain_experience(iAmount, iChainNumber, iLimit)
+	send("6 " .. iAmount .. " " .. iChainNumber .. " " .. iLimit)
+end
+function evCb_lose_experience(iAmount)
+	send("7 " .. iAmount)
+end
+
+function evCb_incoming_chunk(iId, iOriginal, iModified, iInjected, iBlocked)
+	send("8 " .. iId .. " " .. iOriginal .. " " .. iModified .. " " .. tostring(iInjected) .. " " .. tostring(iBlocked))
+	return iModified
 end
 
 --[[

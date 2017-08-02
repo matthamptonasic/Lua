@@ -34,6 +34,39 @@ return {
 	[3] = {id=3, name="logout", args={name='string'}, ret={}, cb=nil, desc="Triggers on logout."},
 	[4] = {id=4, name="gain buff", args={buff_id='uint16'}, ret={}, cb=nil, desc="Triggers on receiving a buff or debuff."},
 	[5] = {id=5, name="lose buff", args={buff_id='uint16'}, ret={}, cb=nil, desc="Triggers on losing a buff or debuff."},
-	[6] = {id=6, name="gain experience", args={amount='uint32', chain_number="uint16", limit="bool"}, ret={}, cb=nil, desc="Triggers on gaining any experience. limit is true, if the EXP gained were limit points."},
-	[7] = {id=7, name="lose experience", args={amount='uint32'}, ret={}, cb=nil, desc="Triggers on losing any experience."}
+	[6] = {id=6, name="gain experience", args={amount='uint32', chain_number='uint16', limit='bool'}, ret={}, cb=nil, desc="Triggers on gaining any experience. limit is true, if the EXP gained were limit points."},
+	[7] = {id=7, name="lose experience", args={amount='uint32'}, ret={}, cb=nil, desc="Triggers on losing any experience."},
+	
+	[8] = {id=8, name="incoming chunk", args={id='uint32', original='string', modified='string', injected='bool', blocked='bool'}, ret={pkt='string', block='bool'}, cb=nil, desc="Triggers on any incoming packet. Optionally returns modified packet or true to block the packet."}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

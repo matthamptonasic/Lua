@@ -43,6 +43,7 @@ files = require('files')
 config = require('config')
 res = require('resources')
 local socket = require("socket")
+events = T{}
 events = require('eventInfo')
 
 require("eventCallbacks")
@@ -66,9 +67,10 @@ for bag in res.bags:it() do
     bagIds[bag.name:lower()] = bag.id
 end
 
---for evInfo in events[info]:it() do
---	events[ids][evInfo[name] = evInfo[id]
---end
+eventIds = T{}
+for idx, evInfo in pairs(events) do
+	eventIds[evInfo["name"]] = evInfo["id"]
+end
 
 function setSocketPort(iPortNb)
 	socketPort = iPortNb
@@ -94,7 +96,7 @@ end
 function printEventInfo(iEventId)
 	local evInfo = events[iEventId]
 	--table.vprint(evInfo)
-	evInfo.cb()
+	--evInfo.cb()
 	--print("events has ", #events, " items.")
 	--print("id passed was", iEventId)
 end
@@ -103,17 +105,23 @@ function register_event(iEvent)
 	local ev = nil
 	if(type(iEvent) == "number") then
 		ev = events[iEvent]
+		log("type number")
 	elseif(type(iEvent) == "string") then
+		ev = events[eventIds[iEvent]]
+		log("type string")
 	else
 		log("unknown type passed to 'eventFwd.register_event'.")
 		return 1
 	end
+	if ev == nil then
+		error("Could not find event " .. iEvent)
+		return 2
+	end
+	windower.register_event(ev.name, ev.cb)
+	return 0
 end
---windower.register_event('load', function()
---	find_all_tempitems()
---end)
 
-printEventInfo(4)
+--register_event("gain buff")
 
 
 
